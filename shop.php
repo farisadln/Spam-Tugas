@@ -1,10 +1,3 @@
-<?php
-include("process/conSQL.php");
-session_start();
-$username = $_SESSION["uname"];
-
-?>
-
 
 
 <!DOCTYPE html>
@@ -57,7 +50,7 @@ include("header.php");
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li ><a href="landing.php">Home</a></li>
+                <li ><a href="landingUser.php">Home</a></li>
                 <li class="active"><a href="shop.php">Shop</a></li>
             </ul>
             <!-- /NAV -->
@@ -95,7 +88,7 @@ include("header.php");
                             <div class="product-body">
                                 <h4 class="product-category"><?php echo $show['kategori']?></h4>
                                 <h3 class="product-name"><a href="#"><?php echo $show['nama_barang']?></a></h3>
-                                <h4 class="product-price">Rp.<?php echo $show['harga']?></h4>
+                                <h4 class="product-price">$.<?php echo $show['harga']?></h4>
                             </div>
                             <div class="add-to-cart">
                                 <a href="add_cart.php?id=<?php echo $show['id_barang']?>">
@@ -109,41 +102,6 @@ include("header.php");
                     }
                     ?>
                 </div>
-
-
-                <!-- product -->
-
-                    <!-- /product -->
-
-                    <div class="clearfix visible-lg visible-md"></div>
-
-                    <!-- product -->
-
-                    <!-- /product -->
-
-                    <div class="clearfix visible-sm visible-xs"></div>
-
-                    <!-- product -->
-
-                    <!-- /product -->
-
-
-
-                    <div class="clearfix visible-lg visible-md visible-sm visible-xs"></div>
-
-                    <!-- product -->
-
-                    <!-- /product -->
-
-                    <!-- product -->
-
-                    <!-- /product -->
-
-                    <div class="clearfix visible-sm visible-xs"></div>
-
-                    <!-- product -->
-
-                    <!-- /product -->
                 </div>
                 <!-- /store products -->
 

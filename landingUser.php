@@ -1,11 +1,4 @@
-<?php
 
-session_start();
-include("process/conSQL.php");
-$username = $_SESSION["uname"];
-
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -110,7 +103,7 @@ $username = $_SESSION["uname"];
                         <div class="product-body">
                             <h4 class="product-category"><?php echo $show['kategori']?></h4>
                             <h3 class="product-name"><a href="#"><?php echo $show['nama_barang']?></a></h3>
-                            <h4 class="product-price">Rp.<?php echo $show['harga']?></h4>
+                            <h4 class="product-price">$.<?php echo $show['harga']?></h4>
                         </div>
                         <div class="add-to-cart">
                             <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>

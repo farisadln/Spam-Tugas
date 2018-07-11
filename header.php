@@ -1,3 +1,12 @@
+<?php
+
+session_start();
+include("process/conSQL.php");
+$username = $_SESSION["uname"];
+
+
+?>
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -73,7 +82,7 @@
                 <!-- SEARCH BAR -->
                 <div class="col-md-6">
                     <center>
-                        <h2 style="color: white;">Ini Toko Faris</h2>
+                        <a href="landingUser.php"><h2 style="color: white;">Ini Toko Faris</h2></a>
                     </center>
                 </div>
                 <!-- /SEARCH BAR -->
@@ -102,3 +111,4 @@
     <!-- /MAIN HEADER -->
 </header>
 <!-- /HEADER -->
+

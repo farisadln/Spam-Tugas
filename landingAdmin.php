@@ -1,9 +1,14 @@
 <?php
 session_start();
+
 include 'process/conSQL.php';
 if($_SESSION['status']!='login'){
 //    var_dump($_SESSION);
-    header("location:indexLogin.php");
+    header("location:formLogin.php");
+
+}
+if($_SESSION['level']!='admin'){
+    header("location:landingUser.php");
 }
 $username = $_SESSION["uname"];
 

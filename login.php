@@ -19,21 +19,19 @@ if(!empty($_POST["uname"]) || !empty($_POST["pass"])) {
         $_SESSION["status"] = 'login';
         $id = $row["id"];
         $_SESSION["id"] = $id;
-        if($level == 1) {
-
-
+        if($level == admin) {
             $_SESSION["uname"] = $username;
             $_SESSION["level"] = $level;
-            header("Location: admin.php");
+            header("Location: landingAdmin.php");
         } else {
 
             $_SESSION["uname"] = $username;
             $_SESSION["level"] = $level;
-            header("Location: landing.php");
+            header("Location: landingUser.php");
         }
     } else {
         $error = urlencode("Username atau password salah!");
-        header("Location: indexLogin.php?pesan=$error");
+        header("Location: formLogin.php?pesan=$error");
     }
 
     # Close connection to database
@@ -43,6 +41,6 @@ if(!empty($_POST["uname"]) || !empty($_POST["pass"])) {
     echo "masuk";
     die();
     $error = urlencode("Username atau password kosong!");
-    header("Location: indexLogin.php?pesan=$error");
+    header("Location: formLogin.php?pesan=$error");
 }
 ?>

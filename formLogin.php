@@ -3,10 +3,10 @@ session_start();
 
 # If user still in session, redirect to profile.php instead of login again
 if(isset($_SESSION['uname']) and isset($_SESSION['level'])){
-    if($_SESSION['level'] == '1') {
-        header("location: landing.php");
+    if($_SESSION['level'] == 'admin') {
+        header("location: landingUser.php");
     } else {
-        header("location: admin.php");
+        header("location: landingAdmin.php");
     }
 }
 

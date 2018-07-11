@@ -4,9 +4,9 @@ session_start();
 # If user still in session, redirect to profile.php instead of login again
 if(isset($_SESSION['uname']) and isset($_SESSION['level'])){
     if($_SESSION['level'] == '1') {
-        header("location: admin.php");
+        header("location: landingAdmin.php");
     } else {
-        header("location: landing.php");
+        header("location: landingUser.php");
     }
 }
 
@@ -63,7 +63,7 @@ if(isset($_GET['pesan'])) {
         <div class="container">
 
             <ul class="header-links pull-right">
-                <li><a href="indexLogin.php"><i class="fa "></i> Login </a></li>
+                <li><a href="formLogin.php"><i class="fa "></i> Login </a></li>
                 <li><a href="formRegister.php"><i class="fa "></i> Daftar </a></li>
             </ul>
         </div>
@@ -86,19 +86,7 @@ if(isset($_GET['pesan'])) {
                 </div>
                 <!-- /LOGO -->
 
-                <!-- SEARCH BAR -->
-                <div class="col-md-6">
-                    <div class="header-search">
-                        <form>
-                            <select class="input-select">
-                                <option value="">All Categories</option>
-                            </select>
-                            <input class="input" placeholder="Search here">
-                            <button class="search-btn">Search</button>
-                        </form>
-                    </div>
-                </div>
-                <!-- /SEARCH BAR -->
+
 
                 <!-- ACCOUNT -->
                 <div class="col-md-3 clearfix">
@@ -301,17 +289,7 @@ if(isset($_GET['pesan'])) {
     initializeClock('clockdiv', deadline);
 </script>
 
-<!-- Timer real -->
-<script language="JavaScript">
-    TargetDate = "12/5/2018 12:00 AM";
-    BackColor = "palegreen";
-    ForeColor = "navy";
-    CountActive = true;
-    CountStepper = -1;
-    LeadingZero = true;
-    DisplayFormat = "%%D%% Days, %%H%% Hours, %%M%% Minutes, %%S%% Seconds.";
-    FinishMessage = "It is finally here!";
-</script>
+
 
 <script language="JavaScript" src="https://scripts.hashemian.com/js/countdown.js"></script>
 

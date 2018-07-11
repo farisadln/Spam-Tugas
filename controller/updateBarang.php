@@ -14,7 +14,7 @@ $query = "UPDATE " .barang. " SET id_barang='$id', nama_barang='$nama', harga='$
 
 
 if(mysqli_query($con,$query)) {
-    header("location: ../admin.php");
+    header("location: ../landingAdmin.php");
 } else {
     echo "Gagal";
 }

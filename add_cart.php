@@ -11,5 +11,5 @@
             header("location: add_cart.php?id=$id_barang");
         }
     }else{
-        header("location:landing.php");
+        header("location:landingUser.php");
     }

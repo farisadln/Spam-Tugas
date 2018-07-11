@@ -14,7 +14,7 @@ $query = "INSERT INTO `barang` (`id_barang`, `nama_barang`, `harga`, `stok`, `fo
 
 
 if(mysqli_query($con,$query)) {
-    header("location: ../admin.php");
+    header("location: ../landingAdmin.php");
 } else {
     echo "Gagal";
 }
