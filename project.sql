@@ -1,189 +1,119 @@
--- phpMyAdmin SQL Dump
--- version 4.7.9
--- https://www.phpmyadmin.net/
+-- MySQL dump 10.16  Distrib 10.2.16-MariaDB, for Linux (x86_64)
 --
--- Host: localhost
--- Generation Time: Jul 09, 2018 at 06:03 PM
--- Server version: 10.2.15-MariaDB
--- PHP Version: 7.1.19
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: project
+-- ------------------------------------------------------
+-- Server version	10.2.16-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Database: `project`
+-- Current Database: `project`
 --
 
--- --------------------------------------------------------
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `project` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `project`;
 
 --
 -- Table structure for table `barang`
 --
 
+DROP TABLE IF EXISTS `barang`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `barang` (
-  `id_barang` int(10) NOT NULL,
+  `id_barang` int(10) NOT NULL AUTO_INCREMENT,
   `nama_barang` varchar(99) NOT NULL,
   `harga` double NOT NULL,
   `stok` int(99) NOT NULL,
   `foto` varchar(225) NOT NULL,
-  `kategori` varchar(30) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `kategori` enum('Laptop','Gadget','Aksesoris') NOT NULL,
+  PRIMARY KEY (`id_barang`)
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `barang`
 --
 
-INSERT INTO `barang` (`id_barang`, `nama_barang`, `harga`, `stok`, `foto`, `kategori`) VALUES
-(1, 'Headset', 999, 90, '', 'Aksesoris'),
-(2, 'Laptop', 290, 10, '', 'Laptop'),
-(3, 'Laptop Bagus', 999, 10, '', 'Laptop'),
-(4, 'Laptop Game', 10, 5, '', 'Laptop'),
-(5, 'Hape ', 99, 5, '', 'Gadget'),
-(6, 'Camera', 100, 5, '', 'Gadget');
-
--- --------------------------------------------------------
+LOCK TABLES `barang` WRITE;
+/*!40000 ALTER TABLE `barang` DISABLE KEYS */;
+INSERT INTO `barang` VALUES (40,'Hape Bagus',991,12,'Hape.png','Gadget'),(41,'Laptop',660,13,'laptop_PNG5940.png','Laptop');
+/*!40000 ALTER TABLE `barang` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `cart`
 --
 
+DROP TABLE IF EXISTS `cart`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `cart` (
-  `id_cart` int(11) NOT NULL,
+  `id_cart` int(11) NOT NULL AUTO_INCREMENT,
   `id_user` int(30) NOT NULL,
   `id_barang` int(30) NOT NULL,
-  `total` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `total` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_cart`),
+  KEY `id_user` (`id_user`),
+  KEY `id_barang` (`id_barang`),
+  CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `lat_user` (`id`),
+  CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`id_cart`, `id_user`, `id_barang`, `total`) VALUES
-(1, 17, 1, NULL),
-(2, 17, 5, NULL);
-
--- --------------------------------------------------------
+LOCK TABLES `cart` WRITE;
+/*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cart` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `lat_user`
 --
 
+DROP TABLE IF EXISTS `lat_user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `lat_user` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `uname` varchar(200) NOT NULL,
   `pass` varchar(32) NOT NULL,
-  `level` enum('user','admin') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `level` enum('regular','admin') NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uname` (`uname`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `lat_user`
 --
 
-INSERT INTO `lat_user` (`id`, `uname`, `pass`, `level`) VALUES
-(5, 'faris', '1234', 'user'),
-(8, 'admin', 'admin', 'user'),
-(9, 'ikaru', 'ikaru', 'user'),
-(10, 'khanza', 'khanza', 'user'),
-(17, 'nana', '1234', 'user');
+LOCK TABLES `lat_user` WRITE;
+/*!40000 ALTER TABLE `lat_user` DISABLE KEYS */;
+INSERT INTO `lat_user` VALUES (1,'admin','admin','admin'),(2,'faris','1234','regular'),(18,'sinka','1234','regular');
+/*!40000 ALTER TABLE `lat_user` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
--- --------------------------------------------------------
-
---
--- Table structure for table `lat_user_lvl`
---
-
-CREATE TABLE `lat_user_lvl` (
-  `id` int(11) NOT NULL,
-  `lvl_name` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `lat_user_lvl`
---
-
-INSERT INTO `lat_user_lvl` (`id`, `lvl_name`) VALUES
-(1, 'admin'),
-(2, 'regular');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `barang`
---
-ALTER TABLE `barang`
-  ADD PRIMARY KEY (`id_barang`);
-
---
--- Indexes for table `cart`
---
-ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id_cart`),
-  ADD KEY `id_user` (`id_user`),
-  ADD KEY `id_barang` (`id_barang`);
-
---
--- Indexes for table `lat_user`
---
-ALTER TABLE `lat_user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `uname` (`uname`);
-
---
--- Indexes for table `lat_user_lvl`
---
-ALTER TABLE `lat_user_lvl`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `barang`
---
-ALTER TABLE `barang`
-  MODIFY `id_barang` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `cart`
---
-ALTER TABLE `cart`
-  MODIFY `id_cart` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `lat_user`
---
-ALTER TABLE `lat_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
-
---
--- AUTO_INCREMENT for table `lat_user_lvl`
---
-ALTER TABLE `lat_user_lvl`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `cart`
---
-ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `lat_user` (`id`),
-  ADD CONSTRAINT `cart_ibfk_2` FOREIGN KEY (`id_barang`) REFERENCES `barang` (`id_barang`);
-COMMIT;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-07-16 23:10:17

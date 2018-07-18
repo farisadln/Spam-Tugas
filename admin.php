@@ -58,6 +58,7 @@ $username = $_SESSION["uname"];
                 <th>Harga Barang</th>
                 <th>Jumlah Barang</th>
                 <th>Gambar</th>
+                <th>Kategori</th>
                 <th colspan="2">Action</th>
 
                 <!-- <th>
@@ -77,14 +78,16 @@ $username = $_SESSION["uname"];
             if(mysqli_num_rows($result) > 0){
                 // mysqli_fetch_assoc($result) digunakan untuk mendapatkan nilai hasil query
                 // dan disimpan kedalam variable $row
-                while($row = mysqli_fetch_assoc($result)){
-                    echo "<tr>";
-                    echo "<td>" . $row["id_barang"] . "</td>"; // mengambil nilai dari kolom "nim_mhs"
-                    echo "<td>" . $row["nama_barang"] . "</td>";
-                    echo "<td>" . $row["harga"] . "</td>";
-                    echo "<td>" . $row["stok"] . "</td>";
-                    echo "<td>" . $row["foto"] . "</td>";
+                while($row = mysqli_fetch_assoc($result)){ ?>
+                    <tr>
+                    <td><?= $row["id_barang"] ?></td>
+                    <td><?= $row["nama_barang"] ?></td>
+                    <td><?= $row["harga"] ?></td>
+                    <td><?= $row["stok"] ?> </td>
+                    <td><img src="img/<?php echo $row['foto']?>"  width="100px" height="100px" ></td>
 
+                    <td><?= $row["kategori"] ?></td>
+            <?php
 
                     // Kolom untuk tempat tombol edit dan delete
                     // Pada href kita harus mengirimkan id untuk kebutuhan filtering

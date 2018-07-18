@@ -1,21 +1,24 @@
 <?php
 include '../process/conSQL.php';
 
-// Dapatkan value dari tambahMhsForm.php
+
+if (isset($_POST['btn-tambah'])) {
+
+    $nama = $_POST['nama_barang'];
+    $harga = $_POST['harga'];
+    $stok = $_POST['stok'];
+    $foto = $_FILES['file']['name'];
+    $kategori = $_POST['kategori'];
+    $tmp = $_FILES['file']['tmp_name'];
+    move_uploaded_file($tmp, '../img/'.$foto);
+
+    $query = "INSERT INTO `barang` (`id_barang`, `nama_barang`, `harga`, `stok`, `foto`,`kategori`) VALUES (NULL, '$nama', '$harga', '$stok', '$foto', '$kategori')";
 
 
-$nama = $_POST["nama_barang"];
-$harga = $_POST["harga"];
-$stok = $_POST["stok"];
-$foto = $_FILES['foto']['name'];
-move_uploaded_file($_FILES['foto']['tmp_name'], "../img/$foto");
-
-$query = "INSERT INTO `barang` (`id_barang`, `nama_barang`, `harga`, `stok`, `foto`) VALUES (NULL, '$nama', '$harga', '$stok', '$foto')";
-
-
-if(mysqli_query($con,$query)) {
-    header("location: ../landingAdmin.php");
-} else {
-    echo "Gagal";
+    if (mysqli_query($con, $query)) {
+        header("location: ../admin.php");
+    } else {
+        echo "Gagal";
+    }
 }
 ?>

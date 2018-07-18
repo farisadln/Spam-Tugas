@@ -17,7 +17,7 @@ $username = $_SESSION["uname"];
     <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <script src="lib/bootstrap/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="css/customIndex.css">
-    <title>SIM Mahasiswa</title>
+    <title></title>
 </head>
 
 <body>
@@ -44,13 +44,7 @@ $username = $_SESSION["uname"];
             $row = mysqli_fetch_assoc($result);
             ?>
             <form action="controller/updateBarang.php" method="POST">
-                <!--
-                    ID mahasiswa tidak perlu ditampilkan, namun tetap kita butuhkan untuk
-                    keperluan query update, sehingga tipe input menggunakan "hidden"
-                    Tips :
-                    Element dengan atribut hidden tetap akan muncul jika kita melakukan
-                    inspect element melalui browser
-                 -->
+
                 <input type="hidden" name="id_mhs" value="<?php echo $row["id_barang"]; ?>">
                 <div class="form-group">
                     <label>Nama Barang</label>
@@ -65,12 +59,20 @@ $username = $_SESSION["uname"];
                     <input type="text" class="form-control" name="stok" value="<?php echo $row["stok"]; ?>">
                 </div>
                 <div class="form-group">
-                    <label>Gambar</label>
-                    <textarea rows="3" class="form-control" name="gambar"><?php echo $row["foto"]; ?></textarea>
+                    <label for="foto">Gambar</label>
+                    <input type="file" class="form-control" id="foto" name="foto">
+                </div>
+                <div class="form-group">
+                    <label>Kategori</label>
+                    <select class="form-control" name="kategori">
+                        <option value="Laptop">Laptop</option>
+                        <option value="Gadget">Gadget</option>
+                        <option value="Aksesoris">Aksesoris</option>
+                    </select>
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" class="btn btn-warning" name="btn-update" value="Update">
+                    <input type="submit" class="btn btn-warning" name="btn-update" value="update">
                 </div>
             </form>
             <?php

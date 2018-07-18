@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +48,7 @@ include("header.php");
         <div id="responsive-nav">
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
-                <li ><a href="landingUser.php">Home</a></li>
+                <li><a href="landingUser.php">Home</a></li>
                 <li class="active"><a href="shop.php">Shop</a></li>
             </ul>
             <!-- /NAV -->
@@ -62,7 +60,6 @@ include("header.php");
 <!-- /NAVIGATION -->
 
 
-
 <!-- SECTION -->
 <div class="section">
     <!-- container -->
@@ -70,51 +67,46 @@ include("header.php");
         <!-- row -->
         <div class="row">
             <!-- ASIDE -->
-
-                <div class="row">
-
+            <div class="row">
                 <?php
-
                 $sql = "select * from barang";
-                $result = mysqli_query($con,$sql);
-                    while ($show = mysqli_fetch_array($result)) {
-                ?>
+                $result = mysqli_query($con, $sql);
+                while ($show = mysqli_fetch_array($result)) {
+                    ?>
                     <!-- product -->
                     <div class="col-md-4 col-xs-6">
                         <div class="product">
                             <div class="product-img">
-                                <img src="./img/product01.png" alt="">
+                                <img src="img/<?php echo $show['foto']?>">
+
                             </div>
                             <div class="product-body">
-                                <h4 class="product-category"><?php echo $show['kategori']?></h4>
-                                <h3 class="product-name"><a href="#"><?php echo $show['nama_barang']?></a></h3>
-                                <h4 class="product-price">$.<?php echo $show['harga']?></h4>
+                                <h4 class="product-category"><?php echo $show['kategori'] ?></h4>
+                                <h3 class="product-name"><a href="#"><?php echo $show['nama_barang'] ?></a></h3>
+                                <h4 class="product-price">$.<?php echo $show['harga'] ?></h4>
                             </div>
                             <div class="add-to-cart">
-                                <a href="add_cart.php?id=<?php echo $show['id_barang']?>">
-                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                                <a href="add_cart.php?id=<?php echo $show['id_barang'] ?>">
+                                    <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart
+                                    </button>
                                 </a>
                             </div>
                         </div>
                     </div>
-
-                        <?php
-                    }
-                    ?>
+                    <?php
+                }
+                ?>
                 </div>
-                </div>
-                <!-- /store products -->
-
-
             </div>
-            <!-- /STORE -->
+        <!-- /store products -->
         </div>
-        <!-- /row -->
+        <!-- /STORE -->
     </div>
-    <!-- /container -->
+    <!-- /row -->
+  </div>
+<!-- /container -->
 </div>
 <!-- /SECTION -->
-
 
 
 <!-- jQuery Plugins -->

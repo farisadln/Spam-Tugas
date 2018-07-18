@@ -22,7 +22,7 @@ if(!empty($_POST["uname"]) || !empty($_POST["pass"])) {
         if($level == admin) {
             $_SESSION["uname"] = $username;
             $_SESSION["level"] = $level;
-            header("Location: landingAdmin.php");
+            header("Location: admin.php");
         } else {
 
             $_SESSION["uname"] = $username;

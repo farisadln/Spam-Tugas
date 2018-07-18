@@ -6,7 +6,7 @@ if(isset($_SESSION['uname']) and isset($_SESSION['level'])){
     if($_SESSION['level'] == 'admin') {
         header("location: landingUser.php");
     } else {
-        header("location: landingAdmin.php");
+        header("location: admin.php");
     }
 }
 

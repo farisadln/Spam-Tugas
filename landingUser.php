@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -98,15 +96,19 @@
                 <div class="col-md-4 col-xs-6">
                     <div class="product">
                         <div class="product-img">
-                            <img src="./img/product01.png" alt="">
+                            <img src="img/<?php echo $show['foto']?>">
+
                         </div>
                         <div class="product-body">
-                            <h4 class="product-category"><?php echo $show['kategori']?></h4>
-                            <h3 class="product-name"><a href="#"><?php echo $show['nama_barang']?></a></h3>
-                            <h4 class="product-price">$.<?php echo $show['harga']?></h4>
+                            <h4 class="product-category"><?php echo $show['kategori'] ?></h4>
+                            <h3 class="product-name"><a href="#"><?php echo $show['nama_barang'] ?></a></h3>
+                            <h4 class="product-price">$.<?php echo $show['harga'] ?></h4>
                         </div>
                         <div class="add-to-cart">
-                            <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+                            <a href="add_cart.php?id=<?php echo $show['id_barang'] ?>">
+                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart
+                                </button>
+                            </a>
                         </div>
                     </div>
                 </div>

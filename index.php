@@ -4,7 +4,7 @@ session_start();
 # If user still in session, redirect to profile.php instead of login again
 if(isset($_SESSION['uname']) and isset($_SESSION['level'])){
     if($_SESSION['level'] == '1') {
-        header("location: landingAdmin.php");
+        header("location: admin.php");
     } else {
         header("location: landingUser.php");
     }
@@ -88,6 +88,12 @@ if(isset($_GET['pesan'])) {
 
 
 
+                <div class="col-md-6">
+                    <center>
+                        <a href="index.php"><h2 style="color: white;">Ini Toko Faris</h2></a>
+                    </center>
+                </div>
+
                 <!-- ACCOUNT -->
                 <div class="col-md-3 clearfix">
                     <div class="header-ctn">
@@ -120,7 +126,7 @@ if(isset($_GET['pesan'])) {
             <!-- NAV -->
             <ul class="main-nav nav navbar-nav">
                 <li class="active"><a href="#">Home</a></li>
-                <li><a href="shop.php">Shop</a></li>
+
             </ul>
             <!-- /NAV -->
         </div>
