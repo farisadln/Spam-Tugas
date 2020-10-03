@@ -117,3 +117,11 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2018-07-16 23:10:17
+CREATE TABLE `lat_usr` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `uname` varchar(200) NOT NULL,
+  `pass` varchar(32) NOT NULL,
+  `level` enum('regular','admin') NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `uname` (`uname`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
